@@ -2,6 +2,7 @@ package br.com.scheduling.demo.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -48,6 +49,16 @@ public class ClienteController {
 	public ResponseEntity<?> deleteCliente(@PathVariable Integer id) {
 		service.deleteClient(id);
 		return ResponseEntity.status(204).build();
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<Cliente> validarSenha(@RequestBody Cliente client){
+		Boolean valid = service.validarSenha(client);
+		if(!valid) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+		}
+		return ResponseEntity.status(200).build();
+		
 	}
 	
 
