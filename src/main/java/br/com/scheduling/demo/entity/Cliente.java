@@ -14,10 +14,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
 @Entity
 @Table(name = "cliente")
-public class Cliente {
+public class Cliente{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +40,7 @@ public class Cliente {
 	@NotBlank(message = "O campo telefone é obrigatório!")
 	@Column(name = "telefone", length = 15, nullable = false)
 	private String telefone;
-
+	
 
 
 }
